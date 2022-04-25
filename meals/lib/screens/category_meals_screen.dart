@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:meals/dummydata/dummy_data.dart';
+import 'package:meals/screens/meal_detail_screen.dart';
 import 'package:meals/widget/meal_item.dart';
 
 class CategoryMealsScreen extends StatelessWidget {
   static const routeName = '/category-meals';
+
+  const CategoryMealsScreen({Key? key}) : super(key: key);
   // final String categoryId;
   // final String categoryTitle;
   // const CategoryMealsScreen(
@@ -30,7 +33,13 @@ class CategoryMealsScreen extends StatelessWidget {
           duration: categoryMeals[index].duration,
           affordability: categoryMeals[index].affordability,
           complexity: categoryMeals[index].complexity,
-          selectMeal: () {},
+          selectMeal: () {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => MealDetailScreen(
+                meal: categoryMeals[index],
+              ),
+            ));
+          },
         ),
         itemCount: categoryMeals.length,
       ),
