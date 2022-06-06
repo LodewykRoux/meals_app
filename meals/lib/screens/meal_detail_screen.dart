@@ -38,32 +38,48 @@ class MealDetailScreen extends StatelessWidget {
           meal.title,
         ),
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: 300,
-            width: double.infinity,
-            child: Image.network(
-              meal.imageUrl,
-              fit: BoxFit.cover,
-            ),
-          ),
-          _buildSectionTitle(context, 'Ingredients'),
-          _buildContainer(
-            child: ListView.builder(
-              itemBuilder: (context, index) => Card(
-                color: Theme.of(context).accentColor,
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                  child: Text(meal.ingredients[index]),
-                ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 300,
+              width: double.infinity,
+              child: Image.network(
+                meal.imageUrl,
+                fit: BoxFit.cover,
               ),
-              itemCount: meal.ingredients.length,
             ),
-          ),
-          _buildSectionTitle(context, 'Ingredients'),
-        ],
+            _buildSectionTitle(context, 'Ingredients'),
+            _buildContainer(
+              child: ListView.builder(
+                itemBuilder: (context, index) => Card(
+                  color: Theme.of(context).accentColor,
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                    child: Text(meal.ingredients[index]),
+                  ),
+                ),
+                itemCount: meal.ingredients.length,
+              ),
+            ),
+            _buildSectionTitle(context, 'Steps'),
+            _buildContainer(
+              child: ListView.builder(
+                itemBuilder: (context, index) => Column(
+                  children: [
+                    ListTile(
+                      leading: CircleAvatar(child: Text('# ${index + 1}')),
+                      title: Text(meal.steps[index]),
+                    ),
+                    const Divider()
+                  ],
+                ),
+                itemCount: meal.steps.length,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
