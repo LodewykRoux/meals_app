@@ -52,9 +52,7 @@ class MainDrawer extends StatelessWidget {
             ));
           }),
           _buildListTile('Filters', Icons.settings, () {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => const FiltersScreen(),
-            ));
+            Navigator.of(context).pushReplacementNamed(FiltersScreen.routeName);
           }),
         ],
       ),
