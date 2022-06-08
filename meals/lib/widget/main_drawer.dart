@@ -48,7 +48,7 @@ class MainDrawer extends StatelessWidget {
           ),
           _buildListTile('Meals', Icons.restaurant, () {
             Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => const TabsScreen(),
+              builder: (context) => TabsScreen(),
             ));
           }),
           _buildListTile('Filters', Icons.settings, () {

@@ -5,9 +5,12 @@ import 'package:meals/widget/meal_item.dart';
 
 class CategoryMealsScreen extends StatefulWidget {
   final List<Meal> meals;
+  final void Function()? toggleFavorite;
   static const routeName = '/category-meals';
 
-  const CategoryMealsScreen({Key? key, required this.meals}) : super(key: key);
+  const CategoryMealsScreen(
+      {Key? key, required this.meals, this.toggleFavorite})
+      : super(key: key);
 
   @override
   State<CategoryMealsScreen> createState() => _CategoryMealsScreenState();
@@ -53,6 +56,7 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
                 .push(MaterialPageRoute(
               builder: (context) => MealDetailScreen(
                 meal: displayedMeals[index],
+                favoriteMeal: widget.toggleFavorite,
               ),
             ))
                 .then((result) {
